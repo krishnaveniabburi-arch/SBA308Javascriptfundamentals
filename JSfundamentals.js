@@ -1,4 +1,5 @@
-// The provided course information.
+// The provided course information
+// Using const, strings, Numbers, Booleans
 const CourseInfo = {
   id: 451,
   name: "Introduction to JavaScript"
@@ -32,7 +33,8 @@ const AssignmentGroup = {
   ]
 };
 
-// The provided learner submission data.
+// The provided learner submission data
+
 const LearnerSubmissions = [
   {
     learner_id: 125,
@@ -78,20 +80,14 @@ const LearnerSubmissions = [
 
 function getLearnerData(course, ag, submissions) {
   // here, we would process this data to achieve the desired result.
-  const result = [
-    {
-      id: 125,
-      avg: 0.985, // (47 + 150) / (50 + 150)
-      1: 0.94, // 47 / 50
-      2: 1.0 // 150 / 150
-    },
-    {
-      id: 132,
-      avg: 0.82, // (39 + 125) / (50 + 150)
-      1: 0.78, // 39 / 50
-      2: 0.833 // late: (140 - 15) / 150
-    }
-  ];
+  // Initialising empty array to store final report objects
+  const result = [];
+  const trackedLearnerIds = []; // to find how many learners
+
+  // If an AssignmentGroup does not belong to its course (mismatching course_id), your program should throw an error, letting the user know that the input was invalid
+  if (ag.course_id !== course.id) {
+    throw new Error('data validation mismatch: AssignmentGroup course_id does not match courseInfo id');
+  }
 
   return result;
 }
