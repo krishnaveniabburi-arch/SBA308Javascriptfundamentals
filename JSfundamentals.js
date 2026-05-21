@@ -104,16 +104,24 @@ function getLearnerData(course, ag, submissions) {
     }
     else {
       trackedLearnerIds.push(currentLearnerId);
-    }
+    
     // creating empty learner object
     const learnerReportShell = {
       id: currentLearnerId
     };
+    // manipulate empty result  array by pushing the newly created object into it 
     result.push(learnerReportShell);
   }
+}
+
+// consolelog
+console.log('[gerlearnerData processed]: Found exactly ${trackedLearnerIds.length} unique learners');
 
   return result;
 }
+
+// Use try/catch and other logic to handle these types of errors gracefully
+
 
 const result = getLearnerData(CourseInfo, AssignmentGroup, LearnerSubmissions);
 
