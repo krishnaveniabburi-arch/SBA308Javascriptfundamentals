@@ -89,6 +89,29 @@ function getLearnerData(course, ag, submissions) {
     throw new Error('data validation mismatch: AssignmentGroup course_id does not match courseInfo id');
   }
 
+  // looping over the submission array using forloop
+  for (let i = 0; i < submissions.length; i++) {
+    const submissionItem = submissions[i]
+    const currentLearnerId = submissionItem.learner_id;
+
+    // using if/else and continue to skip bad data entries if learner_id is missing
+    if (currentLearnerId) {
+      continue;
+    }
+    // checking object for the learner built or not
+    if (trackedLearnerIds.includes(currentLearnerId)){
+      continue;
+    }
+    else {
+      trackedLearnerIds.push(currentLearnerId);
+    }
+    // creating empty learner object
+    const learnerReportShell = {
+      id: currentLearnerId
+    };
+    result.push(learnerReportShell);
+  }
+
   return result;
 }
 
